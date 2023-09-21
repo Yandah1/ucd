@@ -1,11 +1,11 @@
 #include "monty.h"
 
+void free_global_fd(void);
 /**
  * get_failed_stream - Display an error message and exit the program.
  * @fileName: The name of the file that caused the error.
  *
  */
-void free_global_fd();
 
 void get_failed_stream(char *fileName)
 {
@@ -36,4 +36,16 @@ void get_stream(char *fileName)
 		close(fileD);
 		get_failed_stream(fileName);
 	}
+}
+/**
+ * close_stream - Closes stream
+ *
+ */
+void close_stream(void)
+{
+	if (global_fd->stream == NULL)
+		return;
+
+	fclose(global_fd->stream);
+	global_fd->stream = NULL;
 }

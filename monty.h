@@ -63,12 +63,19 @@ void initialize_global_fd(void);
 void get_failed_stream(char *fileName);
 void get_stream(char *fileName);
 void validate_arguments(int argc);
+void close_stream(void);
+void free_tokens(void);
+void tokenize_line(void);
+void get_failed_stream(char *fileName);
+void get_stream(char *fileName);
+void invalid_instruction(void);
+void fetch_instruction(void);
 
 
 
 
 
-/* main */
+ /* main */
 int main(int argc, char **arg);
 
 #endif /* MONTY_H */
