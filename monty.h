@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <ctype.h>
+#include <string.h>
 
 /*
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -51,7 +52,9 @@ typedef struct fd
 	char **tokens;
 	int num_tokens;
 	unsigned int lineNum;
-	instruction_t *instPtr;
+	instruction_t *instruction;
+	stack_t *head;
+	int stack_length;
 
 } Global_d;
 
@@ -70,7 +73,16 @@ void get_failed_stream(char *fileName);
 void get_stream(char *fileName);
 void invalid_instruction(void);
 void fetch_instruction(void);
+void run_instruction(void);
+int is_number(char  *str);
+void free_head(void);
+void free_all_args(void);
+void free_stack(stack_t *head);
 
+void push(stack_t **stack, unsigned int lineNum);
+void pop(stack_t **stack, unsigned int lineNum);
+void pint(stack_t **stack, unsigned int lineNum);
+void pall(stack_t **stack, unsigned int lineNum);
 
 
 

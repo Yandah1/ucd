@@ -1,4 +1,4 @@
-#include "maonty.h"
+#include "monty.h"
 
 /**
  * tokenize_line - function to tokenize line from files
@@ -9,7 +9,7 @@
 void tokenize_line(void)
 {
 	int i = 0;
-	char *dels = " \n", *token = NULL, linecpy = NULL;
+	char *dels = " \n", *token = NULL, *linecpy = NULL;
 
 	linecpy = malloc(sizeof(char) * (strlen(global_fd->line) + 1));
 	strcpy(linecpy, global_fd->line);
@@ -21,8 +21,7 @@ void tokenize_line(void)
 		token = strtok(NULL, dels);
 	}
 
-	global_fd->tokens = malloc(sizeof(char *) *
-			(global_fd_tokens + 1);
+	global_fd->tokens = malloc(sizeof(char *) * (global_fd->num_tokens + 1));
 	strcpy(linecpy, global_fd->line);
 	token = strtok(linecpy, dels);
 	while (token)
@@ -33,10 +32,11 @@ void tokenize_line(void)
 		{
 			malloc_failed();
 		}
-		strcpy(global_fd_tokens[i], token);
+		strcpy(global_fd->tokens[i], token);
 		token = strtok(NULL, dels);
 		i++;
 	}
 	global_fd->tokens[i] = NULL;
 	free(linecpy);
 }
+

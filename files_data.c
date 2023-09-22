@@ -28,15 +28,3 @@ void initialize_global_fd(void)
 	global_fd->num_tokens = 0;
 	global_fd->lineNum = 0;
 }
-/**
- * free_global_fd - fees resources associated with global_fd.
- *
- */
-void free_global_fd(void)
-{
-	if (global_fd->stream != NULL)
-	{
-		fclose(global_fd->stream);
-	}
-	free(global_fd);
-}

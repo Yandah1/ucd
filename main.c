@@ -22,8 +22,14 @@ int main(int argc, char **argv)
 
 	while (getline(&global_fd->line, &n, global_fd->stream) != -1)
 	{
-		printf("%s", global_fd->line);
+		global_fd->lineNum += 1;
+		tokenize_line();
+		fetch_instruction();
+		run_instruction();
+		free_tokens();
 	}
+	close_stream();
+	free_global_fd();
 
 	return (0);
 }

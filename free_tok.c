@@ -10,9 +10,9 @@ void free_tokens(void)
 	if (global_fd->tokens == NULL)
 		return;
 
-	while (global_fd-tokens[i])
+	while (global_fd->tokens[i])
 	{
-		free(global_fd-.tokens[i]);
+		free(global_fd->tokens[i]);
 		i++;
 	}
 	free(global_fd->tokens);

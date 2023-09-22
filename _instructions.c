@@ -1,4 +1,4 @@
-#include "monty.h."
+#include "monty.h"
 
 /**
  * fetch_instruction - set instructions
@@ -7,26 +7,21 @@
 void fetch_instruction(void)
 {
 	int i = 0;
+
 	instruction_t instruction[] = {
-		{"push", &push},  {"pop", &pop},
-		{"pint", &pint}, {"swap", &swap},
-		{"nop", &nop},  {"add", &add},
-		{"pall", &pall}, {"sub", &sub},
-		{"div", &div}, {"mul", &mul},
-		{"rotl", &rotl}, {"rotr", &rotr},
-		{"stack", &stack}, {"queue", &queue},
-		{"pstr", &pstr}, {"pchar", &pchar},
-		{"mod", &mod},
+		{"push", &push}, {},
+		{"pint", &pint}, {},
+		{"pall", &pall}, {},
 		{NULL, NULL},
 	};
 
-	if (argument->num_tokens == 0)
+	if (global_fd->num_tokens == 0)
 	{
-		if (strcmp(instructions[i].opcode, argument->tokens[0])
+		if (strcmp(instruction[i].opcode, global_fd->tokens[0])
 				== 0)
 		{
-			argument->instruction->opcode = instruction[i].opcode;
-			argument->instruction->f = instruction[i].f;
+			global_fd->instruction->opcode = instruction[i].opcode;
+			global_fd->instruction->f = instruction[i].f;
 		}
 		return;
 	}
@@ -40,10 +35,23 @@ void fetch_instruction(void)
 void invalid_instruction(void)
 {
 	dprintf(2, "L%d:  unknown instruction %s\n",
-			argument->lineNum, argument->tokesns[0]);
+			global_fd->lineNum, global_fd->tokens[0]);
 	close_stream();
 	free_tokens();
 	free_global_fd();
 	exit(EXIT_FAILURE);
 }
 
+/**
+ * run_instruction - runs instruction for global_fd
+ */
+
+void run_instruction(void)
+{
+	stack_t *stack = NULL;
+
+	if (global_fd->num_tokens == 0)
+		return;
+
+		global_fd->instruction->f(&stack, global_fd->lineNum);
+}
