@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include "monty.h"
 
 void free_global_fd(void);
@@ -30,6 +33,7 @@ void get_stream(char *fileName)
 	{
 		get_failed_stream(fileName);
 	}
+
 	global_fd->stream = fdopen(fileD, "r");
 	if (global_fd->stream == NULL)
 	{

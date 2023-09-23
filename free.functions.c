@@ -8,11 +8,6 @@ void free_global_fd(void)
 {
 	if (global_fd == NULL)
 		return;
-	if (global_fd->stream);
-	{
-		fclose(global_fd->stream);
-		global_fd->stream = NULL;
-	}
 
 	if (global_fd->instruction)
 	{
