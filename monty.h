@@ -80,6 +80,13 @@ void free_all_args(void);
 void free_stack(stack_t *head);
 void delete_stack_node(void);
 
+/* called functions*/
+int dprintf(int fd, const char *format, ...);
+ssize_t getline(char **lineptr, size_t  *, FILE *stream);
+FILE *fdopen(int fd, const char *mode);
+
+
+
 void push(stack_t **stack, unsigned int lineNum);
 void pop(stack_t **stack, unsigned int lineNum);
 void pint(stack_t **stack, unsigned int lineNum);

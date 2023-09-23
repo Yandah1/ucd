@@ -36,7 +36,7 @@ void fetch_instruction(void)
 
 void invalid_instruction(void)
 {
-	fprintf(stderr, "L%d:  unknown instruction %s\n",
+	dprintf(2, "L%d:  unknown instruction %s\n",
 			global_fd->lineNum, global_fd->tokens[0]);
 	close_stream();
 	free_tokens();

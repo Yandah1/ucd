@@ -12,7 +12,7 @@ void pop(stack_t **stack, unsigned int lineNum)
 
 	if (global_fd->head == NULL)
 	{
-		fprintf(stderr, "L%d: can't pop am empty stack\n", lineNum);
+		dprintf(2, "L%d: can't pop am empty stack\n", lineNum);
 		free_all_args();
 		exit(EXIT_FAILURE);
 	}

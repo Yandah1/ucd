@@ -12,7 +12,7 @@ void free_global_fd(void);
 
 void get_failed_stream(char *fileName)
 {
-	fprintf(stderr, "Error: Failed to open file %s\n", fileName);
+	dprintf(2, "Error: Failed to open file %s\n", fileName);
 	free_global_fd();
 	exit(EXIT_FAILURE);
 }

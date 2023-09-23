@@ -11,7 +11,7 @@ void push(stack_t **stack, unsigned int lineNum)
 	if (global_fd->num_tokens <= 1 || !(is_number(global_fd->tokens[1])))
 	{
 		free_global_fd();
-		fprintf(stderr, "L%d: usage: push integer\n", lineNum);
+		dprintf(2, "L%d: usage: push integer\n", lineNum);
 		exit(EXIT_FAILURE);
 	}
 
